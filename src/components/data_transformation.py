@@ -25,7 +25,7 @@ class DataTransformation:
         try:
             logging.info("Data Transformation initiated")
             numerical_columns = ['writing_score', 'reading_score']
-            categorical_columns = ['gender', 'race/ethnicity', 'parental level of education', 'lunch', 'test preparation course']
+            categorical_columns = ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
             
             num_pipeline = Pipeline(
                 steps=[
@@ -38,7 +38,7 @@ class DataTransformation:
                 steps=[
                     ('imputer', SimpleImputer(strategy='most_frequent')),
                     ('onehot', OneHotEncoder(handle_unknown='ignore')),
-                    ('scaler', StandardScaler())
+                    ('scaler', StandardScaler(with_mean=False))
                 ]
             )
 
